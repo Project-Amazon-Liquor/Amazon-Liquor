@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-    <title>Pixie - Ecommerce HTML5 Template</title>
+    <title>Pixie - Products</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,13 +47,13 @@ https://www.tooplate.com/view/2114-pixie
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home
+              <a class="nav-link" href="products.html">Products
                 <span class="sr-only">(current)</span>
               </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="products.html">Products</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html">About Us</a>
@@ -67,107 +67,130 @@ https://www.tooplate.com/view/2114-pixie
     </nav>
 
     <!-- Page Content -->
-    <!-- Banner Starts Here -->
-    <div class="banner">
+    <!-- Items Starts Here -->
+    <div class="featured-page">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="caption">
-              <h2>Ecommerce HTML Template</h2>
-              <div class="line-dec"></div>
-              <p>Pixie HTML Template can be converted into your desired CMS theme. Total <strong>5 pages</strong> included. You can use this Bootstrap v4.1.3 layout for any CMS. 
-              <br><br>Please tell your friends about <a rel="nofollow" href="https://www.facebook.com/tooplate/">Tooplate</a> free template site. Thank you. Photo credit goes to <a rel="nofollow" href="https://www.pexels.com">Pexels website</a>.</p>
-              <div class="main-button">
-                <a href="#">Order Now!</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Banner Ends Here -->
-
-    <!-- Featured Starts Here -->
-    <div class="featured-items">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-4 col-sm-12">
             <div class="section-heading">
               <div class="line-dec"></div>
               <h1>Featured Items</h1>
             </div>
           </div>
-          <div class="col-md-12">
-            <div class="owl-carousel owl-theme">
-              <a href="single-product.html">
-                <div class="featured-item">
-                  <img src="assets/images/item-01.jpg" alt="Item 1">
-                  <h4>Proin vel ligula</h4>
-                  <h6>$15.00</h6>
-                </div>
-              </a>
-              <a href="single-product.html">
-                <div class="featured-item">
-                  <img src="assets/images/item-02.jpg" alt="Item 2">
-                  <h4>Erat odio rhoncus</h4>
-                  <h6>$25.00</h6>
-                </div>
-              </a>
-              <a href="single-product.html">
-                <div class="featured-item">
-                  <img src="assets/images/item-03.jpg" alt="Item 3">
-                  <h4>Integer vel turpis</h4>
-                  <h6>$35.00</h6>
-                </div>
-              </a>
-              <a href="single-product.html">
-                <div class="featured-item">
-                  <img src="assets/images/item-04.jpg" alt="Item 4">
-                  <h4>Sed purus quam</h4>
-                  <h6>$45.00</h6>
-                </div>
-              </a>
-              <a href="single-product.html">
-                <div class="featured-item">
-                  <img src="assets/images/item-05.jpg" alt="Item 5">
-                  <h4>Morbi aliquet</h4>
-                  <h6>$55.00</h6>
-                </div>
-              </a>
-              <a href="single-product.html">
-                <div class="featured-item">
-                  <img src="assets/images/item-06.jpg" alt="Item 6">
-                  <h4>Urna ac diam</h4>
-                  <h6>$65.00</h6>
-                </div>
-              </a>
-              <a href="single-product.html">
-                <div class="featured-item">
-                  <img src="assets/images/item-04.jpg" alt="Item 7">
-                  <h4>Proin eget imperdiet</h4>
-                  <h6>$75.00</h6>
-                </div>
-              </a>
-              <a href="single-product.html">
-                <div class="featured-item">
-                  <img src="assets/images/item-05.jpg" alt="Item 8">
-                  <h4>Nullam risus nisl</h4>
-                  <h6>$85.00</h6>
-                </div>
-              </a>
-              <a href="single-product.html">
-                <div class="featured-item">
-                  <img src="assets/images/item-06.jpg" alt="Item 9">
-                  <h4>Cras tempus</h4>
-                  <h6>$95.00</h6>
-                </div>
-              </a>
+          <div class="col-md-8 col-sm-12">
+            <div id="filters" class="button-group">
+              <button class="btn btn-primary" data-filter="*">All Products</button>
+              <button class="btn btn-primary" data-filter=".new">Newest</button>
+              <button class="btn btn-primary" data-filter=".low">Low Price</button>
+              <button class="btn btn-primary" data-filter=".high">Hight Price</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Featred Ends Here -->
+  
+    <div class="featured container no-gutter">
+
+        <div class="row posts">
+            <div id="1" class="item new col-md-4">
+              <a href="single-product.html">
+                <div class="featured-item">
+                  <img src="assets/images/product-01.jpg" alt="">
+                  <h4>Proin vel ligula</h4>
+                  <h6>$15.00</h6>
+                </div>
+              </a>
+            </div>
+            <div id="2" class="item high col-md-4">
+              <a href="single-product.html">
+                <div class="featured-item">
+                  <img src="assets/images/product-02.jpg" alt="">
+                  <h4>Erat odio rhoncus</h4>
+                  <h6>$25.00</h6>
+                </div>
+              </a>
+            </div>
+            <div id="3" class="item low col-md-4">
+              <a href="single-product.html">
+                <div class="featured-item">
+                  <img src="assets/images/product-03.jpg" alt="">
+                  <h4>Integer vel turpis</h4>
+                  <h6>$35.00</h6>
+                </div>
+              </a>
+            </div>
+            <div id="4" class="item low col-md-4">
+              <a href="single-product.html">
+                <div class="featured-item">
+                  <img src="assets/images/product-04.jpg" alt="">
+                  <h4>Sed purus quam</h4>
+                  <h6>$45.00</h6>
+                </div>
+              </a>
+            </div>
+            <div id="5" class="item new high col-md-4">
+              <a href="single-product.html">
+                <div class="featured-item">
+                  <img src="assets/images/product-05.jpg" alt="">
+                  <h4>Morbi aliquet</h4>
+                  <h6>$55.00</h6>
+                </div>
+              </a>
+            </div>
+            <div id="6" class="item new col-md-4">
+              <a href="single-product.html">
+                <div class="featured-item">
+                  <img src="assets/images/product-06.jpg" alt="">
+                  <h4>Urna ac diam</h4>
+                  <h6>$65.00</h6>
+                </div>
+              </a>
+            </div>
+            <div id="7" class="item new high col-md-4">
+              <a href="single-product.html">
+                <div class="featured-item">
+                  <img src="assets/images/product-03.jpg" alt="">
+                  <h4>Proin eget imperdiet</h4>
+                  <h6>$75.00</h6>
+                </div>
+              </a>
+            </div>
+            <div id="8" class="item low new col-md-4">
+              <a href="single-product.html">
+                <div class="featured-item">
+                  <img src="assets/images/product-02.jpg" alt="">
+                  <h4>Nullam risus nisl</h4>
+                  <h6>$85.00</h6>
+                </div>
+              </a>
+            </div>
+            <div id="9" class="item new col-md-4">
+              <a href="single-product.html">
+                <div class="featured-item">
+                  <img src="assets/images/product-01.jpg" alt="">
+                  <h4>Cras tempus</h4>
+                  <h6>$95.00</h6>
+                </div>
+              </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li class="current-page"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Featred Page Ends Here -->
 
 
     <!-- Subscribe Form Starts Here -->
@@ -182,7 +205,7 @@ https://www.tooplate.com/view/2114-pixie
           </div>
           <div class="col-md-8 offset-md-2">
             <div class="main-content">
-              <p>Integer vel turpis ultricies, lacinia ligula id, lobortis augue. Vivamus porttitor dui id dictum efficitur. Phasellus vel interdum elit.</p>
+              <p>Godard four dollar toast prism, authentic heirloom raw denim messenger bag gochujang put a bird on it celiac readymade vice.</p>
               <div class="container">
                 <form id="subscribe" action="" method="get">
                   <div class="row">
@@ -272,6 +295,7 @@ https://www.tooplate.com/view/2114-pixie
     <!-- Additional Scripts -->
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/owl.js"></script>
+    <script src="assets/js/isotope.js"></script>
 
 
     <script language = "text/Javascript"> 
