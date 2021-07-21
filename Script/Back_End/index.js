@@ -5,6 +5,10 @@ const mongoClient = require("mongodb").MongoClient;
 //const { request, response } = require("express");
 const connectionString =
   "mongodb+srv://Amazon_Liquor:Amazon_Liquor@amazonliquorcluster.g6efq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 77ca9128f7a48a8375ecccc867ee5de7ae08130a
 //create the dummy server
 server = express();
 server.use(express.json());
@@ -15,6 +19,10 @@ mongoClient
   .connect(connectionString, { useUnifiedTopology: true })
   .then((client) => {
     //create the database object
+<<<<<<< HEAD
+=======
+
+>>>>>>> 77ca9128f7a48a8375ecccc867ee5de7ae08130a
     const liquorDB = client.db("Amazon_Liquor");
     //create the three tables:product,customer and order
     const productTable = liquorDB.collection("Products_Collection");
@@ -220,6 +228,10 @@ mongoClient
 
     //customers
     server.delete("/customers/delete", (request, response) => {});
+<<<<<<< HEAD
+=======
+
+>>>>>>> 77ca9128f7a48a8375ecccc867ee5de7ae08130a
   })
   .catch((err) => console.error(err));
 const available_port = process.env.PORT || 3000;
