@@ -1,0 +1,44 @@
+/* Make the #destinations_container content to display horizontally and wrap */
+.submit_btn {
+  width: 100%;
+}
+#destinations_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#title {
+  text-align: center;
+}
+
+.buttons_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main_container {
+  display: flex;
+}
+.centered_text {
+  text-align: center;
+}
+
+.box {
+  height: 90vh;
+  border: 1px solid #606060;
+  margin: 10px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
