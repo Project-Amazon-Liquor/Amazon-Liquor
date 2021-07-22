@@ -97,26 +97,18 @@ mongoClient
 
     //order
     server.post("/orders", (request, response) => {
-      let {
-        _id,
-        customer_id,
-        product_details,
-        quantity,
-        total_price,
-        order_date,
-      } = request.body;
+      let { _id, product_details, total_price, order_date, shipping_info } =
+        request.body;
       if (_id === undefined) {
         return response.status(400).send("_id is required");
       }
-      if (customer_id === undefined) {
-        return response.status(400).send("customer_id is required");
+      if (shipping_info === undefined) {
+        return response.status(400).send("shipping information is required");
       }
       if (product_details === undefined) {
         return response.status(400).send("product_details is required");
       }
-      if (quantity === undefined) {
-        return response.status(400).send("quantity is required");
-      }
+
       if (total_price === undefined) {
         return response.status(400).send("total_price is required");
       }
@@ -126,14 +118,14 @@ mongoClient
       //console.log(typeof product_details);
       //generate array of object with product_id and quantity
       let products = generateProductArray(product_details);
+      let shipping = generateShippingInformation(shipping_info);
       //create the order record for the database
       let orderRecord = {
         _id: parseInt(_id),
-        Customer_id: parseInt(customer_id),
         Products: products,
-        Quantity: parseInt(quantity),
         Total_Price: parseFloat(total_price),
         Order_Date: order_date,
+        Shipping_Info: shipping,
       };
       orderTable
         .insertOne(orderRecord)
@@ -177,8 +169,12 @@ mongoClient
     //search for items
     server.get("/products/search", (request, response) => {
       let query = {};
+      let _id = request.body._id || request.query._id;
+      if (_id !== undefined) {
+        query["_id"] = parseInt(_id);
+      }
       let { brand, volume, alcohol_percentage, category, retail_price } =
-        request.body;
+        request.body || request.query;
 
       if (brand !== undefined) {
         brand = brand[0].toUpperCase() + brand.slice(1).toLowerCase();
@@ -192,15 +188,13 @@ mongoClient
         query["Alcohol_Percentage"] = alcohol_percentage;
       }
       if (category !== undefined) {
-        query["Category"] = category[0]
-          .toUpperCase()
-          .category.slice(1)
-          .toLowerCase();
+        console.log(category);
+        category = category[0].toUpperCase() + category.slice(1).toLowerCase();
+        query["Category"] = category;
       }
       if (retail_price !== undefined) {
         query["Retail_Price"] = retail_price;
       }
-      console.log(query);
       const productCursor = productTable
         .find(query)
         .toArray()
@@ -211,19 +205,20 @@ mongoClient
     //orders
     server.get("/orders/search", (request, response) => {
       let params = {};
-      let { _id: orderID } = request.body || request.query._id;
-      if (orderID === undefined) {
+      let _id = request.body._id || request.query._id;
+      if (_id === undefined) {
         return response.status(400).send("order ID is required");
       }
-      if (orderID !== undefined) {
-        params["_id"] = orderID;
+      if (_id !== undefined) {
+        params["_id"] = parseInt(_id);
       }
+      console.log(params);
       const orderCursor = orderTable
         .find(params)
         .toArray()
         .then((data) => {
           if (data.length === 0) {
-            response.send(`Sorry, order with ID ${orderID} does not exist`);
+            response.send(`Sorry, order with ID ${_id} does not exist`);
           } else {
             response.send(data);
           }
@@ -315,19 +310,22 @@ mongoClient
       let orderParams = {};
       let keyPara = {};
       let _id = request.query._id || request.body._id;
-      let { quantity, total_price, order_date } = request.body;
+      let { product_details, total_price, order_date, shipping } = request.body;
       if (_id === undefined) {
         return response.status(400).send("_id is required");
       }
       keyPara["_id"] = parseInt(_id);
-      if (quantity !== undefined) {
-        orderParams["Quantity"] = parseInt(quantity);
+      if (product_details !== undefined) {
+        orderParams["Products"] = generateProductArray(product_details);
       }
       if (total_price !== undefined) {
         orderParams["Total_Price"] = parseFloat(total_price);
       }
       if (order_date !== undefined) {
         orderParams["Order_Date"] = order_date;
+      }
+      if (shipping !== undefined) {
+        orderParams["Shipping_Info"] = generateShippingInformation(shipping);
       }
 
       orderTable
@@ -471,6 +469,18 @@ function generateProductArray(products) {
     order_product_detail.push(eachItem);
   }
   return order_product_detail;
+}
+
+function generateShippingInformation(information) {
+  //create shipping object
+  let shipping = {};
+  let info = information.split(":");
+  shipping["first_name"] = info[0];
+  shipping["last_name"] = info[1];
+  shipping["email"] = info[2];
+  shipping["phone"] = info[3];
+  shipping["address"] = info[4];
+  return shipping;
 }
 const available_port = process.env.PORT || 3000;
 //dummy server listening to any available port
