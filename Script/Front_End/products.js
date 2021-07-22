@@ -25,7 +25,8 @@ function pageLoad() {
       console.log(location);
       if (
         jQuery.isEmptyObject(par) ||
-        location.toLowerCase() === par.keyword.toLowerCase()
+        par.keyword.toLowerCase() === "" ||
+        par.keyword.toLowerCase() === location.toLowerCase()
       ) {
         let card = document.createElement("div");
         card._id = _id;

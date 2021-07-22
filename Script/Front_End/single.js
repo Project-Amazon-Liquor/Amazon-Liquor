@@ -87,12 +87,6 @@ function postputTemp(id, newQty) {
   console.log(localStorage.getItem("stored_item"));
 }
 
-function deletTemp(id) {
-  var oldItems = JSON.parse(localStorage.getItem("stored_item"));
-  oldItems[id] = null;
-  localStorage.setItem("stored_item", JSON.stringify(oldItems));
-}
-
 function getCurrentQty(id) {
   if (getTemp(id)) {
     return getTemp(id).qty;
