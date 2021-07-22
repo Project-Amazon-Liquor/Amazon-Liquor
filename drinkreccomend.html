@@ -17,7 +17,7 @@
 
     <!-- Bootstrap core CSS -->
     <link
-      href="./Script/Front_End/bootstrap/css/bootstrap.min.css"
+      href="./bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
     />
 
@@ -36,26 +36,14 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <a class="navbar-brand" href="#"><img src="./Image/LogoText.png" alt="Amazonlogo" ></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div
-          class="collapse navbar-collapse"
-          id="navbarResponsive"
-          style="padding-top: 40px"
-        >
+        <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-top: 40px;">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item1 active">
-              <a class="nav-link" href="index.html"
-                >Home
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -63,33 +51,24 @@
               <a class="nav-link" href="products.html">Products</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="drinkreccomend.html">Bartending 101</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shippingpage.html">Order Shipment</a>
+              </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">Cart</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="about.html">About Us</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="shippingpage.html">Order Shipment</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="drinkreccomend.html">Bartending 101</a>
-              </li>
-            <li class="nav-item">
-              <div style="float: right">
-                <form action="products.html" style="display: flex" method="GET">
-                  <input
-                    id="searchbar"
-                    type="text"
-                    class="form-control"
-                    placeholder="Search"
-                    name="keyword"
-                  />
-                  <input
-                    type="submit"
-                    style="margin-left: 5px"
-                    class="button"
-                  />
-                </form>
+            <li class="nav-item" >
+              <div style="float: right;">
+                <form action="products.html" style="display: flex;" method="GET"> 
+                <input id="searchbar" type="text" class="form-control"  placeholder="Search" name="keyword">
+                <input type="submit" style="margin-left: 5px;" class="button">
+              </form>
               </div>
             </li>
           </ul>
@@ -212,14 +191,14 @@
     <!-- Footer ends here  -->
 
     <!-- Bootstrap core JavaScript -->
-    <script src="./Script/Front_End/jquery/jquery.min.js"></script>
-    <script src="./Script/Front_End/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./jquery/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Additional Scripts -->
-    <script src="./Script/Front_End/custom.js"></script>
-    <script src="./Script/Front_End/owl.js"></script>
-    <script src="./Script/Front_End/searchbar.js"></script>
-    <script src="./Script/Front_End/recommend.js"></script>
+    <script src="./Script/custom.js"></script>
+    <script src="./Script/owl.js"></script>
+    <script src="./Script/searchbar.js"></script>
+    <script src="./Script/recommend.js"></script>
 </div>
   </body>
 </html>
