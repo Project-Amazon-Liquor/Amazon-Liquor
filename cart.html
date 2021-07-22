@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
 
-    <title>Home</title>
+    <title>Cart</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -25,7 +25,9 @@
     <link rel="stylesheet" href="css/fontawesome.css" />
     <link rel="stylesheet" href="css/tooplate-main.css" />
     <link rel="stylesheet" href="css/owl.css" />
+
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/cart.css" />
 
     <!-- Bootstrap core JavaScript -->
     <script src="Script/Front_End/jquery/jquery.min.js"></script>
@@ -36,9 +38,10 @@
     <script src="Script/Front_End/owl.js"></script>
     <script src="Script/Front_End/isotope.js"></script>
     <script defer src="Script/Front_End/cart.js"></script>
+    <script src="Script/Front_End/flex-slider.js"></script>
   </head>
 
-  <body onload="doShowAll()">
+  <body>
     <!-- Pre Header -->
     <div id="pre-header">
       <div class="container">
@@ -86,6 +89,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="shippingpage.html">Order Shipment</a>
+              <a class="nav-link" href="cart.html">Cart</a>
             </li>
           </ul>
         </div>
@@ -94,34 +98,34 @@
 
     <!-- Page Content -->
     <!-- Items Starts Here -->
-    <div class="featured-page">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 col-sm-12">
-            <div class="section-heading">
-              <div class="line-dec"></div>
-              <h1>Featured Items</h1>
-            </div>
-          </div>
-          <div class="col-md-8 col-sm-12">
-            <div id="filters" class="button-group">
-              <button class="btn btn-primary" data-filter="*">
-                All Products
-              </button>
-              <button class="btn btn-primary" data-filter=".low">
-                Low Price
-              </button>
-              <button class="btn btn-primary" data-filter=".high">
-                Hight Price
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="small-container cart-page">
+      <table id="cart-list">
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      </table>
 
-    <div class="featured container no-gutter">
-      <section class="row" id="products_container"></section>
+      <div class="total-price">
+        <table>
+          <tr>
+            <td>Subtotal</td>
+            <td id="Subtotal"></td>
+          </tr>
+          <tr>
+            <td>Tax (15%)</td>
+            <td id="Tax"></td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td id="Total"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="total-price">
+        <a href="#" class="checkoutbtn">Proceed to checkout &#8594;</a>
+      </div>
     </div>
 
     <!-- Footer Starts Here -->
