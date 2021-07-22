@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
 
-    <title>Pixie - Ecommerce HTML5 Template</title>
+    <title>Amazon Liquor</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -26,21 +26,13 @@
     <link rel="stylesheet" href="./CSS/tooplate-main.css" />
     <link rel="stylesheet" href="./CSS/owl.css" />
     <link rel="stylesheet" href="./CSS/shipping.css" />
-    <link rel="stylesheet" href="./recommend.css" />
+    <link rel="stylesheet" href="./CSS/recommend.css" />
   </head>
 
   <body>
+      <div class="bg">
     <!-- Pre Header -->
-    <div id="pre-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <span>Please drink responsivly.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
@@ -80,8 +72,8 @@
               <a class="nav-link" href="shippingpage.html">Order Shipment</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="drinkreccomend.html">Bartending 101</a>
-            </li>
+                <a class="nav-link" href="drinkreccomend.html">Bartending 101</a>
+              </li>
             <li class="nav-item">
               <div style="float: right">
                 <form action="products.html" style="display: flex" method="GET">
@@ -120,84 +112,57 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <div class="shippingForm">
+              <div class="bartender">
                 <main>
-                  <h1 class="shippingForm">Shipping Form</h1>
-                  <p><em>Please Input Your Shipping Details Here</em></p>
+                 
                   <!-- form start -->
-                  <form action="localhost://3000/orders" method="POST">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"
-                        >First Name</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="First Name"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"
-                        >Last Name</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="Last Name"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"
-                        >Email address</label
-                      >
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="name@example.com"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"
-                        >Phone</label
-                      >
-                      <input
-                        type="number"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="Phone"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"
-                        >Address</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="Address"
-                      />
-                    </div>
-                    <div class="col-auto">
-                      <button type="submit" class="btn btn-primary mb-3">
-                        Submit Shipment Details
-                      </button>
-                    </div>
-                  </form>
-                  <!-- form end -->
-                </main>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div id="feature-container" class="owl-carousel owl-theme"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+                  <div class="text-center"> 
+                  <h1 style="text-align: center" ;>
+                    <u
+                      >Covid Stops you from going to the Bar? Be your own Bartender with
+                      <em>Amazon Liquor</em> Today
+                    </u>
+                  </h1>
+                  <br />
+                  <h3 class="p2">
+                    What kind of drink do you like to Make? Let us help you !
+                  </h3>
+              
+                  <p>&nbsp;</p>
+                 
+                  <img src="./Image/bartender.jpg" class="img-fluid" alt="bartender">
+                  <p>&nbsp;</p>
+                
+              
+                  <h2>What do you like to drink today?</h2>
+                  <br></br>
+                  <p class="p2">Choose from our drop-down menu :</p>
+                 <br></br>
+                  <select id="choice">
+                    <option value="Select">Select</option>
+                    <option value="French 75">French 75</option>
+                    <option value="Moscow Mule">Moscow Mule</option>
+                    <option value="Double Chocolate Martini">Double Chocolate Martini</option>
+                    <option value="Bloody Mary">Bloody Mary</option>
+                    <option value="White Russian">White Russian</option>
+                    <option value="Celebrating Something? Champagne?">
+                      Celebrating Something? Champagne?
+                    </option>
+                    <option value="Something Sweet?">Something Sweet?</option>
+              
+                    <option value="Want to forget what you had for dinner previous night?">
+                      Want to forget what you had for dinner previous night?
+                    </option>
+                  </select>
+              
+                  <button class="btn1" onclick="loadchoices()">Continue</button><br />
+                  &nbsp;
+                  &nbsp;
+                  &nbsp;
+                  <p><u class="btn1">You just became a bartender !</u> :</p>
+                  <br />
+                  <h3 class="h3" id="result"></h3>
+                  <br />
     <!-- Shipping form Ends Here -->
 
     <!-- Footer Starts Here -->
@@ -242,6 +207,7 @@
         </div>
       </div>
     </nav>
+</div>
 
     <!-- Footer ends here  -->
 
@@ -253,5 +219,7 @@
     <script src="./Script/Front_End/custom.js"></script>
     <script src="./Script/Front_End/owl.js"></script>
     <script src="./Script/Front_End/searchbar.js"></script>
+    <script src="./Script/Front_End/recommend.js"></script>
+</div>
   </body>
 </html>
