@@ -5,7 +5,6 @@ const mongoClient = require("mongodb").MongoClient;
 //const { request, response } = require("express");
 const connectionString =
   "mongodb+srv://Amazon_Liquor:Amazon_Liquor@amazonliquorcluster.g6efq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
 //create the dummy server
 server = express();
 server.use(express.json());
@@ -16,7 +15,6 @@ mongoClient
   .connect(connectionString, { useUnifiedTopology: true })
   .then((client) => {
     //create the database object
-
     const liquorDB = client.db("Amazon_Liquor");
     //create the three tables:product,customer and order
     const productTable = liquorDB.collection("Products_Collection");
@@ -215,14 +213,52 @@ mongoClient
 
     //delete item from the database
     //products
-    server.delete("/products/delete", (request, response) => {});
+    server.delete("/products/delete", (request, response) => {
+      const { _id } = req.query;
+
+      if (_id === undefined) {
+        return res.status(400).send({ message: "?_id required" });
+      }
+      if (productTable[_id] === undefined) {
+        return res
+          .status(410)
+          .send({ message: "no product with that _id to Delete" });
+      }
+      delete orders[_id];
+      res.send("Deleted Successfully");
+    });
 
     //orders
-    server.delete("/orders/delete", (request, response) => {});
+    server.delete("/orders/delete", (request, response) => {
+      const { _id } = req.query;
+
+      if (_id === undefined) {
+        return res.status(400).send({ message: "?_id required" });
+      }
+      if (orderTable[_id] === undefined) {
+        return res
+          .status(410)
+          .send({ message: "no order with that _id to Delete" });
+      }
+      delete orders[_id];
+      res.send("Deleted Successfully");
+    });
 
     //customers
-    server.delete("/customers/delete", (request, response) => {});
+    server.delete("/customers/delete", (request, response) => {
+      const { _id } = req.query;
 
+      if (_id === undefined) {
+        return res.status(400).send({ message: "?_id required" });
+      }
+      if (customerTable[_id] === undefined) {
+        return res
+          .status(410)
+          .send({ message: "no customer with that _id to Delete" });
+      }
+      delete orders[_id];
+      res.send("Deleted Successfully");
+    });
   })
   .catch((err) => console.error(err));
 const available_port = process.env.PORT || 3000;
