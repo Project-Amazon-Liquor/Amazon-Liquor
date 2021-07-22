@@ -383,6 +383,7 @@ mongoClient
     //delete item from the database
     //products
     server.delete("/products/delete", (request, response) => {
+
       let key = {};
       let _id = request.body._id || request.query._id;
       if (_id === undefined) {
@@ -403,10 +404,14 @@ mongoClient
           }
         })
         .catch((err) => response.send(err));
+
+     
+
     });
 
     //orders
     server.delete("/orders/delete", (request, response) => {
+
       let orderKey = {};
       let _id = request.body._id || request.query._id;
 
@@ -452,6 +457,7 @@ mongoClient
           }
         })
         .catch((err) => response.send(err));
+
     });
   })
   .catch((err) => console.error(err));
