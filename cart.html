@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
 
-    <title>Home</title>
+    <title>Cart</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/fontawesome.css" />
     <link rel="stylesheet" href="css/tooplate-main.css" />
     <link rel="stylesheet" href="css/owl.css" />
+
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/cart.css" />
 
@@ -37,6 +38,7 @@
     <script src="Script/Front_End/owl.js"></script>
     <script src="Script/Front_End/isotope.js"></script>
     <script defer src="Script/Front_End/cart.js"></script>
+    <script src="Script/Front_End/flex-slider.js"></script>
   </head>
 
   <body>
@@ -85,6 +87,9 @@
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact Us</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">Cart</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -105,15 +110,15 @@
         <table>
           <tr>
             <td>Subtotal</td>
-            <td>$200.00</td>
+            <td id="Subtotal"></td>
           </tr>
           <tr>
-            <td>Tax</td>
-            <td>$35.00</td>
+            <td>Tax (15%)</td>
+            <td id="Tax"></td>
           </tr>
           <tr>
             <td>Total</td>
-            <td>$235.00</td>
+            <td id="Total"></td>
           </tr>
         </table>
       </div>

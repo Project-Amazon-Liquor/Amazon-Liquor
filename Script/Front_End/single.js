@@ -7,36 +7,19 @@ var productName = 0;
 var photoURL = "";
 const urlSearchParams = new URLSearchParams(window.location.search);
 const par = Object.fromEntries(urlSearchParams.entries());
-if (!localStorage) {
-  localStorage.setItem("stored_item", "[]");
+//localStorage.setItem("stored_item", "{}");
+if (!localStorage.getItem("stored_item")) {
+  localStorage.setItem("stored_item", "{}");
 }
-
-//localStorage.setItem("stored_item", "[]");
-let productQty = 0;
-var oldItems = JSON.parse(localStorage.getItem("stored_item"));
-for (item of oldItems) {
-  if (item._id === par._id) {
-    productQty = item.qty;
-    break;
-  }
-}
-
-localStorage.setItem("stored_item", JSON.stringify(oldItems));
-console.log(localStorage.getItem("stored_item"));
 
 load();
 
 function load() {
   const productURL = `${URL}?_id=${par._id}`;
-  console.log(productURL);
   fetch(productURL)
     .then((data) => data.json())
     .then((product) => {
       const { name, location, photo } = product;
-      productName = name;
-      photoURL = photo;
-
-      console.log(document.getElementById("product-image"));
       document.getElementById("product-image").innerHTML = `<img src=${photo}>`;
 
       document.getElementById("product-info").innerHTML = `<h4>${name}</h4>
@@ -54,74 +37,66 @@ function load() {
               id="quantity"
               onfocus="if(this.value == '1') { this.value = ''; }"
               onBlur="if(this.value == '') { this.value = '1';}"
-              value="${productQty}"/>
+              value="${getCurrentQty(par._id)}"/>
             <input type="submit" class="button" value="Add to Cart" />
           </form>`;
       document
         .getElementById("product-qty")
         .addEventListener("submit", handleSubmit);
     });
-
-  //     ${() => {
-  //       if (getItemFromLocalStorage()) {
-  //         getItemFromLocalStorage().qty;
-  //       } else {
-  //         0;
-  //       }
-  //     }}
 }
 
 function handleSubmit(e) {
   e.preventDefault();
-  let qtyInput = e.target.quantity.value;
-
-  updateToLocalStorage(qtyInput);
-  e.target.quantity.value = getItemFromLocalStorage().qty;
+  postputTemp(par._id, e.target.quantity.value);
 }
 
-function updateToLocalStorage(qtyInput) {
+function getTemp(id) {
   var oldItems = JSON.parse(localStorage.getItem("stored_item"));
+  if (oldItems[id]) {
+    return oldItems[id];
+  }
+  return null;
+}
 
-  var status = false;
-  for (item of oldItems) {
-    if (item._id === par._id) {
-      item.qty = qtyInput;
-      status = true;
-      break;
-    }
+async function getProduct(id) {
+  const response = await fetch(`${URL}?_id=${id}`);
+  const product = await response.json();
+  return product;
+}
+
+function postputTemp(id, newQty) {
+  var oldItems = JSON.parse(localStorage.getItem("stored_item"));
+  if (oldItems[id]) {
+    oldItems[id].qty = newQty;
+    localStorage.setItem("stored_item", JSON.stringify(oldItems));
+  } else {
+    getProduct(id).then((product) => {
+      const { name, location, photo } = product;
+
+      oldItems[id] = {
+        _id: id,
+        price: id,
+        name: name,
+        qty: newQty,
+        photo: photo,
+      };
+      localStorage.setItem("stored_item", JSON.stringify(oldItems));
+    });
   }
-  if (!status) {
-    var newItem = {
-      _id: par._id,
-      price: par._id,
-      name: productName,
-      qty: qtyInput,
-      photo: photoURL,
-    };
-    oldItems.push(newItem);
-  }
-  localStorage.setItem("stored_item", JSON.stringify(oldItems));
   console.log(localStorage.getItem("stored_item"));
 }
 
-function getItemFromLocalStorage() {
-  var items = JSON.parse(localStorage.getItem("stored_item"));
-  for (item of items) {
-    if (item._id === par._id) {
-      return item;
-    }
+function deletTemp(id) {
+  var oldItems = JSON.parse(localStorage.getItem("stored_item"));
+  oldItems[id] = null;
+  localStorage.setItem("stored_item", JSON.stringify(oldItems));
+}
+
+function getCurrentQty(id) {
+  if (getTemp(id)) {
+    return getTemp(id).qty;
+  } else {
+    return 0;
   }
 }
-// console.log(oldItems);
-
-// console.log(localStorage.getItem("stored_item"));
-
-// console.log("after");
-
-//   var newItem = {
-//     _id: itemContainer.find("h2.product-name a").text(),
-//     price: itemContainer.find("div.product-image img").attr("src"),
-//     qty: itemContainer.find("span.product-price").text(),
-//   };
-// oldItems.push(newItem);
-// localStorage.setItem(stored_item, JSON.stringify(oldItems));

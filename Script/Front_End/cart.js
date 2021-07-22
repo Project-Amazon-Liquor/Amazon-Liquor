@@ -1,7 +1,9 @@
 var oldItems = JSON.parse(localStorage.getItem("stored_item"));
-
-for (item of oldItems) {
-  let { _id, price, name, qty, photo } = item;
+pricing();
+for (var id in oldItems) {
+  //console.log(oldItems[id]);
+  let { _id, price, name, qty, photo } = oldItems[id];
+  //console.log(_id, price, name, qty, photo);
   addproductinfo(_id, price, name, photo, qty);
 }
 
@@ -24,26 +26,16 @@ function addproductinfo(_id, price, name, photo, qty) {
   document.getElementById(
     `product-info-container${_id}`
   ).innerHTML += `<td><input type="number" id="qty_${_id}" value=${qty} /></td>
-  <td id="sub_${_id}">${qty * price}</td>`;
+  <td id="sub_${_id}">$ ${itemSubtotal(_id)}</td>`;
   document
     .getElementById(`qty_${_id}`)
     .addEventListener("change", qtyChangeHandle);
 
   function qtyChangeHandle(e) {
     e.preventDefault();
-    let changedQty = document.getElementById(`qty_${_id}`).value;
-    let userSub = changedQty * price;
-    document.getElementById(`sub_${_id}`).innerHTML = `${userSub}`;
-
-    var oldItems = JSON.parse(localStorage.getItem("stored_item"));
-    for (item of oldItems) {
-      if (item._id === _id) {
-        item.qty = changedQty;
-        break;
-      }
-    }
-    localStorage.setItem("stored_item", JSON.stringify(oldItems));
-    console.log(localStorage.getItem("stored_item"));
+    postputTemp(_id, document.getElementById(`qty_${_id}`).value);
+    document.getElementById(`sub_${_id}`).innerHTML = `$ ${itemSubtotal(_id)}`;
+    pricing();
   }
 
   // document.getElementById(`product-info-container${_id}`).innerHTML += ;
@@ -56,7 +48,7 @@ function addproductinfo(_id, price, name, photo, qty) {
 
   let productDetail = document.createElement("div");
   productDetail.innerHTML = ` <p>${name}</p>
-  <small>Price: ${price}</small><br>
+  <small>Price: ${Number(price).toFixed(2)}</small><br>
   <a id="removebtn_${_id}" href="">Remove</a>`;
 
   document.getElementById(`cart-info${_id}`).appendChild(productDetail);
@@ -66,15 +58,7 @@ function addproductinfo(_id, price, name, photo, qty) {
 
   function removeHandle(e) {
     e.preventDefault();
-    var oldItems = JSON.parse(localStorage.getItem("stored_item"));
-    console.log(oldItems);
-    for (item of oldItems) {
-      if (item._id === _id) {
-        oldItems.splice(oldItems.indexOf(item), 1);
-        break;
-      }
-    }
-    localStorage.setItem("stored_item", JSON.stringify(oldItems));
+    deletTemp(_id);
     console.log(localStorage.getItem("stored_item"));
     location.href = "cart.html";
   }
@@ -85,4 +69,70 @@ function handlephotoClick(e) {
   console.log("1");
   let _id = e.currentTarget._id;
   location.href = `single-product.html?_id=${_id}`;
+}
+
+function getTemp(id) {
+  var oldItems = JSON.parse(localStorage.getItem("stored_item"));
+  if (oldItems[id]) {
+    return oldItems[id];
+  }
+  return null;
+}
+
+async function getProduct(id) {
+  const response = await fetch(`${URL}?_id=${id}`);
+  const product = await response.json();
+  return product;
+}
+
+function postputTemp(id, newQty) {
+  var oldItems = JSON.parse(localStorage.getItem("stored_item"));
+  if (oldItems[id]) {
+    oldItems[id].qty = newQty;
+    localStorage.setItem("stored_item", JSON.stringify(oldItems));
+  } else {
+    getProduct(id).then((product) => {
+      const { name, location, photo } = product;
+
+      oldItems[id] = {
+        _id: id,
+        price: id,
+        name: name,
+        qty: newQty,
+        photo: photo,
+      };
+      localStorage.setItem("stored_item", JSON.stringify(oldItems));
+    });
+  }
+  console.log(localStorage.getItem("stored_item"));
+}
+
+function deletTemp(id) {
+  var oldItems = JSON.parse(localStorage.getItem("stored_item"));
+  delete oldItems[id];
+
+  localStorage.setItem("stored_item", JSON.stringify(oldItems));
+}
+
+function pricing() {
+  var oldItems = JSON.parse(localStorage.getItem("stored_item"));
+  let subtotal = 0;
+  for (var id in oldItems) {
+    //console.log(oldItems[id]);
+    let { price, qty } = oldItems[id];
+    subtotal += price * qty;
+  }
+  document.getElementById("Subtotal").innerHTML = `$ ${Number(subtotal).toFixed(
+    2
+  )}`;
+  document.getElementById("Tax").innerHTML = `$ ${Number(
+    subtotal * 0.15
+  ).toFixed(2)}`;
+  document.getElementById("Total").innerHTML = `$ ${Number(
+    subtotal * 1.15
+  ).toFixed(2)}`;
+}
+
+function itemSubtotal(id) {
+  return Number(getTemp(id).price * getTemp(id).qty).toFixed(2);
 }
