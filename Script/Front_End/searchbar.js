@@ -4,7 +4,6 @@ const URL =`${API_BASE_URL}/destinations`;
 
 const bannerAPI = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
 
-loadBanner();
 loadFeatureCards();
 
 function loadFeatureCards(){
@@ -38,25 +37,6 @@ function loadFeatureCards(){
 
                     document.getElementById("featureBanner").appendChild(featureCard);
             }
-        })
-        
-}
-
-  function loadBanner(){
-
-    fetch(bannerAPI)
-        .then((response)=> response.json())
-        .then((banner) => {
-            let strDrinkThumb;             
-            for (const str in banner.drinks[0]) {
-                if(str =="strDrinkThumb"){
-                   strDrinkThumb = banner.drinks[0][str];
-                   break;
-                }
-                
-            }
-            
-           // document.getElementsByClassName("banner").appendChild(strDrinkThumb);
         })
         
 }
