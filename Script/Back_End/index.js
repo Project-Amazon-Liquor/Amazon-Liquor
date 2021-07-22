@@ -1,9 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const mongoClient = require("mongodb").MongoClient;
-const e = require("express");
-//const { response } = require("express");
-//const { request, response } = require("express");
 const connectionString =
   "mongodb+srv://Amazon_Liquor:Amazon_Liquor@amazonliquorcluster.g6efq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 //create the dummy server
@@ -100,8 +97,46 @@ mongoClient
 
     //order
     server.post("/orders", (request, response) => {
+      let {
+        _id,
+        customer_id,
+        product_details,
+        quantity,
+        total_price,
+        order_date,
+      } = request.body;
+      if (_id === undefined) {
+        return response.status(400).send("_id is required");
+      }
+      if (customer_id === undefined) {
+        return response.status(400).send("customer_id is required");
+      }
+      if (product_details === undefined) {
+        return response.status(400).send("product_details is required");
+      }
+      if (quantity === undefined) {
+        return response.status(400).send("quantity is required");
+      }
+      if (total_price === undefined) {
+        return response.status(400).send("total_price is required");
+      }
+      if (order_date === undefined) {
+        return response.status(400).send("order_date is required");
+      }
+      //console.log(typeof product_details);
+      //generate array of object with product_id and quantity
+      let products = generateProductArray(product_details);
+      //create the order record for the database
+      let orderRecord = {
+        _id: parseInt(_id),
+        Customer_id: parseInt(customer_id),
+        Products: products,
+        Quantity: parseInt(quantity),
+        Total_Price: parseFloat(total_price),
+        Order_Date: order_date,
+      };
       orderTable
-        .insertOne(request.body)
+        .insertOne(orderRecord)
         .then((status) => response.send({ message: "success" }))
         .catch((err) => response.status(400).send(err));
     });
@@ -422,6 +457,21 @@ mongoClient
     });
   })
   .catch((err) => console.error(err));
+
+//generate the product object
+function generateProductArray(products) {
+  let order_product_detail = [];
+  for (let product of products.split(";")) {
+    //create a new object
+    let eachItem = {};
+    //split each product into product_id and quantity
+    let item = product.split(",");
+    eachItem["product_id"] = parseInt(item[0]);
+    eachItem["quantity"] = parseInt(item[1]);
+    order_product_detail.push(eachItem);
+  }
+  return order_product_detail;
+}
 const available_port = process.env.PORT || 3000;
 //dummy server listening to any available port
 server.listen(available_port, () => {
