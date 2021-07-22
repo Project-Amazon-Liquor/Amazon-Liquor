@@ -1,3 +1,4 @@
+
 const API_BASE_URL = "https://express-api-cm.herokuapp.com";
 const URL =`${API_BASE_URL}/destinations`;
 
@@ -34,6 +35,7 @@ function loadFeatureCards(){
                     <h6>$${location}</h6>
                     </div>
                     `;
+
                     document.getElementById("featureBanner").appendChild(featureCard);
             }
         })
@@ -58,3 +60,4 @@ function loadFeatureCards(){
         })
         
 }
+
