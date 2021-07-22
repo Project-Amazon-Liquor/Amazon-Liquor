@@ -49,6 +49,7 @@ function load() {
 function handleSubmit(e) {
   e.preventDefault();
   postputTemp(par._id, e.target.quantity.value);
+  alert("Drinking alcohol can hurt your liver");
 }
 
 function getTemp(id) {
