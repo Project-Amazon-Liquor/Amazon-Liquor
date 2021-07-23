@@ -80,7 +80,7 @@ function getTemp(id) {
 }
 
 async function getProduct(id) {
-  const response = await fetch(`${URL}?_id=${id}`);
+  const response = await fetch(`${URL}/search?_id=${id}`);
   const product = await response.json();
   return product;
 }
@@ -92,15 +92,16 @@ function postputTemp(id, newQty) {
     localStorage.setItem("stored_item", JSON.stringify(oldItems));
   } else {
     getProduct(id).then((product) => {
-      const { name, location, photo } = product;
-
+      product = product[0];
+      const { Brand, URL, Retail_Price } = product;
       oldItems[id] = {
         _id: id,
-        price: id,
-        name: name,
+        price: Retail_Price,
+        name: Brand,
         qty: newQty,
-        photo: photo,
+        photo: URL,
       };
+
       localStorage.setItem("stored_item", JSON.stringify(oldItems));
     });
   }

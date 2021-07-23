@@ -1,51 +1,56 @@
 const API_BASE_URL = "https://amazonliquor.herokuapp.com";
 const URL = `${API_BASE_URL}/orders`;
 
-const urlSearchParams = new URLSearchParams(window.location.search);
-const par = Object.fromEntries(urlSearchParams.entries());
-console.log(par);
-console.log(jQuery.isEmptyObject(par));
+document
+  .getElementById("order-search-form")
+  .addEventListener("submit", handleSubmit);
 
-async function loadProductsCard() {
-  const response = await fetch(URL);
-  const products = await response.json();
-  return products;
-}
-
-function pageLoad() {
-  loadProductsCard().then((products) => {
-    for (const _id in products) {
-      let { name, location, photo } = products[_id];
-
-      if (
-        jQuery.isEmptyObject(par) ||
-        par.keyword.toLowerCase() === "" ||
-        par.keyword.toLowerCase() === location.toLowerCase()
-      ) {
-        let card = document.createElement("div");
-        card._id = _id;
-        card.classList = "item new col-md-4";
-        card.innerHTML = `<a href="single-product.html">
-          <div class="featured-item">
-            <img
-              src=${photo}
-              class="card-img-top"
-              alt=""
-            />
-            <h4>${name}</h4>
-            <h6>${location}</h6>
-          </div>
-        </a>`;
-
-        card.addEventListener("click", handleClick);
-        document.getElementById("products_container").appendChild(card);
-      }
-    }
-  });
-}
-
-function handleClick(e) {
+function handleSubmit(e) {
   e.preventDefault();
-  let _id = e.currentTarget._id;
-  location.href = `single-product.html?_id=${_id}`;
+  const orderid = e.target.elements["orderid"].value;
+  e.target.elements["orderid"].value = "";
+  clear();
+  loadOrder(`${URL}/search?_id=${orderid}`);
+}
+function clear() {
+  document.getElementById("id-date-price").innerHTML = "";
+  document.getElementById("products").innerHTML = "";
+  document.getElementById("shipping-info").innerHTML = "";
+  document.getElementById("no").innerHTML = "";
+}
+
+function loadOrder(URL) {
+  fetch(URL)
+    .then((data) => data.json())
+    .then((product) => {
+      product = product[0];
+      print(product);
+    })
+    .catch((err) => {
+      document.getElementById("no").innerHTML = "NO ORDER FOUND!";
+    });
+}
+
+function print(product) {
+  const { _id, Products, Total_Price, Order_Date, Shipping_Info } = product;
+  document.getElementById(
+    "id-date-price"
+  ).innerHTML = `Order ID: ${_id} <br> Order Date: ${Order_Date} <br> Order Total: $${Number(
+    Total_Price
+  ).toFixed(2)}`;
+
+  var productinfo = "";
+  Products.forEach((element) => {
+    console.log(element.product_id);
+    productinfo += `Product ID: 
+    ${element.product_id} * 
+    ${element.quantity}<br>`;
+  });
+  document.getElementById("products").innerHTML = productinfo;
+  console.log(Shipping_Info);
+  document.getElementById(
+    "shipping-info"
+  ).innerHTML = `${Shipping_Info.first_name} *** <br>
+  ${Shipping_Info.email}<br>
+  ${Shipping_Info.address}`;
 }

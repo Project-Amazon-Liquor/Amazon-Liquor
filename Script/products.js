@@ -1,12 +1,10 @@
-const API_BASE_URL = "http://nothinginit.herokuapp.com";
+const API_BASE_URL = "https://amazonliquor.herokuapp.com";
 const FALL_BACK_DESTINATION_PHOTO_URL =
   "https://cavchronicle.org/wp-content/uploads/2018/03/top-travel-destination-for-visas-900x504.jpg";
-const URL = `${API_BASE_URL}/destinations`;
+const URL = `${API_BASE_URL}/products`;
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const par = Object.fromEntries(urlSearchParams.entries());
-console.log(par);
-console.log(jQuery.isEmptyObject(par));
 
 async function loadProductsCard() {
   const response = await fetch(URL);
@@ -16,17 +14,16 @@ async function loadProductsCard() {
 
 function pageLoad() {
   loadProductsCard().then((products) => {
-    for (const _id in products) {
-      let { name, location, photo } = products[_id];
-
-      if (photo === "") {
-        photo = FALL_BACK_DESTINATION_PHOTO_URL;
+    for (const product of products) {
+      let { _id, Brand, Category, URL } = product;
+      if (URL === "" || !URL) {
+        URL = FALL_BACK_DESTINATION_PHOTO_URL;
       }
-      console.log(location);
+
       if (
         jQuery.isEmptyObject(par) ||
         par.keyword.toLowerCase() === "" ||
-        par.keyword.toLowerCase() === location.toLowerCase()
+        par.keyword.toLowerCase() === Category.toLowerCase()
       ) {
         let card = document.createElement("div");
         card._id = _id;
@@ -34,12 +31,12 @@ function pageLoad() {
         card.innerHTML = `<a href="single-product.html">
           <div class="featured-item">
             <img
-              src=${photo}
+              src=${URL}
               class="card-img-top"
               alt=""
             />
-            <h4>${name}</h4>
-            <h6>${location}</h6>
+            <h4>${Brand}</h4>
+            <h6>${Category}</h6>
           </div>
         </a>`;
 

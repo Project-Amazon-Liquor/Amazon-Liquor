@@ -13,25 +13,28 @@
       rel="stylesheet"
     />
 
-    <title>Pixie - Ecommerce HTML5 Template</title>
+    <title>Products</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="./CSS/fontawesome.css" />
-    <link rel="stylesheet" href="./CSS/tooplate-main.css" />
-    <link rel="stylesheet" href="./CSS/owl.css" />
-    <link rel="stylesheet" href="./CSS/shipping.css" />
+    <link rel="stylesheet" href="./CSS/fontawesome.css">
+    <link rel="stylesheet" href="./CSS/tooplate-main.css">
+    <link rel="stylesheet" href="./CSS/owl.css">
+    <link rel="stylesheet" href="./CSS/styles.css" />
+    <link rel="stylesheet" href="./CSS/cart.css" />
+
   </head>
 
   <body>
+    <div class="bg">
     <!-- Pre Header -->
     <div id="pre-header">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <span>Please drink responsivly.</span>
+            <span>Welcome to Amazon Liquor</span>
           </div>
         </div>
       </div>
@@ -40,144 +43,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
-        <a class="navbar-brand" href="#"><img src="./Image/LogoText.png" alt="Amazonlogo" ></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-top: 40px;">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="products.html">Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="drinkreccomend.html">Bartending 101</a>
-            </li>
-              <li class="nav-item">
-                <a class="nav-link" href="shippingpage.html">Order Shipment</a>
-              </li>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="cart.html">Cart</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item" >
-              <div style="float: right;">
-                <form action="products.html" style="display: flex;" method="GET"> 
-                <input id="searchbar" type="text" class="form-control"  placeholder="Search" name="keyword">
-                <input type="submit" style="margin-left: 5px;" class="button">
-              </form>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Page Content -->
-    <!-- Banner Starts Here -->
-    <div class="banner1">
-      <div class="container">
-        <div class="row"></div>
-      </div>
-    </div>
-    <!-- Banner Ends Here -->
-
-    <!-- Shipping form  Starts Here -->
-    <div class="featured-items">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <div class="shippingForm">
-                <main>
-                  <h1 class="shippingForm">Shipping Form</h1>
-                  <p><em>Please Input Your Shipping Details Here</em></p>
-                  <!-- form start -->
-                  <form action="localhost://3000/orders" method="POST">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"
-                        >First Name</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="First Name"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"
-                        >Last Name</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="Last Name"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"
-                        >Email address</label
-                      >
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="name@example.com"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"
-                        >Phone</label
-                      >
-                      <input
-                        type="number"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="Phone"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label"
-                        >Address</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="Address"
-                      />
-                    </div>
-                    <div class="col-auto">
-                      <button type="submit" class="btn btn-primary mb-3">
-                        Submit Shipment Details
-                      </button>
-                    </div>
-                  </form>
-                  <!-- form end -->
-                </main>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div id="feature-container" class="owl-carousel owl-theme"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Shipping form Ends Here -->
-
-    <!-- Footer Starts Here -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><img src="Image/header-logo.png" alt=""
+        /></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -189,46 +57,234 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div
-          class="collapse navbar-collapse"
-          id="navbarResponsive"
-          style="padding-top: 40px"
-        >
+        <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item1 active">
-              <a class="nav-link" href="index.html"
-                >Home
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html"
+                >PRODUCTS
+
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="drinkreccomend.html">BARTENDING 101</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ordersearchresult.html">ORDERS</a>
+            </li>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="cart.html">CART
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="products.html">Products</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="about.html">About Us</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="shippingpage.html">Order Shipment</a>
-            </li>
+
           </ul>
+
         </div>
+
+
       </div>
+
     </nav>
 
-    <!-- Footer ends here  -->
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="./jquery/jquery.min.js"></script>
-    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner1">
+      <div class="container">
+        <div class="row"></div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+    <div class="small-container cart-page no-gutter">
+      <div class="container" style="display: flex">
+      <!-- Order display Starts Here -->    
+        <section class="container" id="order-info">
+          <h2 class="shippingForm" text-align: center>Order Detail</h2>
+          <div class="small-container cart-page">
 
-    <!-- Additional Scripts -->
-    <script src="./Script/custom.js"></script>
-    <script src="./Script/owl.js"></script>
-    <script src="./Script/isotope.js"></script>
-    <script src="./Script/flex-slider.js"></script>
-    <script src="./Script/searchbar.js"></script>
+
+            <table id="cart-list">                        
+                </table>
+      
+            <div class="total-price">
+              <table>
+                <tr>
+                  <td>Total</td>
+                  <td id="Total"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </section>
+        <!-- Shipping form  Starts Here -->
+        <section class="container" id="shipping-form">
+          <h2 class="shippingForm">Shipping Form</h2>
+
+           <div class="no-gutter featured-items">
+
+            <div class="container">
+
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="section-heading">
+                    <div class="shippingForm">
+                      
+
+                        <p><em>Please Input Your Shipping Details Here</em></p>
+
+                        <!-- form start -->
+                        <!-- <form action="localhost://3000/orders" method="POST"> -->
+                        <form id="shipping-form">
+         
+                          <div class="mb-3">
+                            <label
+                              for="firstname"
+                              class="form-label"
+                              >First Name</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="first"
+                              placeholder="First Name"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Last Name</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="Last-Name"
+                              placeholder="Last Name"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Email address</label
+                            >
+                            <input
+                              type="email"
+                              class="form-control"
+                              id="email"
+                              placeholder="name@example.com"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Phone</label
+                            >
+                            <input
+                              type="tel"
+                              class="form-control"
+                              id="Phone"
+                              placeholder="Phone"
+
+                            >
+                          </div>
+                          <div class="mb-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Address</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="Address"
+                              placeholder="Address"
+                            />
+                          </div>
+                          <button type="submit" class=" checkoutbtn btn btn-primary submit_btn">
+                            Submit Order
+                          </button>
+                          <!-- href="#"  -->
+                        </form>
+                        <!-- form end -->
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div
+                    id="feature-container"
+                    class="owl-carousel owl-theme"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Shipping form Ends Here -->
+        </section>
+      </div>
+      <!-- <div class="total-price">
+        <a class="checkoutbtn" id="checkout">Submit Order &#8594;</a>
+      </div> -->
+    </div>
+
+    <!-- Footer Starts Here -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="logo">
+              <img src="./Image/header-logo.png" alt="" />
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="footer-menu">
+              <ul>
+                <li><a >Home</a></li>
+                <li><a >Help</a></li>
+                <li><a >Privacy Policy</a></li>
+                <li><a >Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="social-icons">
+              <ul>
+                <li>
+                  <a ><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a ><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a ><i class="fa fa-linkedin"></i></a>
+                </li>
+                <li>
+                  <a ><i class="fa fa-rss"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Ends Here -->
+
+
+        <script src="./Script/isotope.js"></script>
+        <script src="./Script/flex-slider.js"></script>
+        <script defer src="./Script/shipping.js"></script>
+
+
+
   </body>
 </html>

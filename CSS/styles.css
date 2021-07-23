@@ -77,7 +77,7 @@ th {
   text-align: left;
   padding: 5px;
   color: #fff;
-  background: #ff523b;
+  background: #3a8bcd;
   font-weight: normal;
 }
 
@@ -97,4 +97,43 @@ th {
 
 img:hover {
   cursor: pointer;
+}
+
+h2 {
+  text-align: center;
+}
+
+.bg {
+  background-color: #ffffff;
+}
+
+/* Banner Style */
+.banner2 {
+  margin-top: 50px;
+  background-image: url(../Image/ship.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 150px 0px;
+  background-position: center center;
+}
+.banner2 .caption {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 200px;
+  max-width: 1800px;
+}
+.banner2 .caption h2 {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e1e1e;
+}
+.banner2 .caption .line-dec {
+  width: 30px;
+  height: 5px;
+  background-color: #3a8bcd;
+}
+.banner2 .caption p {
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
