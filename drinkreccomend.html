@@ -27,56 +27,74 @@
     <link rel="stylesheet" href="./CSS/owl.css" />
     <link rel="stylesheet" href="./CSS/shipping.css" />
     <link rel="stylesheet" href="./CSS/recommend.css" />
+    <link rel="stylesheet" href="./CSS/styles.css" />
   </head>
 
-  <body>
-      <div class="bg">
+  <body onload="pageLoad()">
+    <div class="bg">
     <!-- Pre Header -->
-    <div class="text-center">
-      <a class="img-fluid rounded mx-auto d-block" href="#"><img src="./Image/LogoText.png" alt="Amazonlogo" ></a>
+    <div id="pre-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <span>Bartending 101
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
-    
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#"
+          ><img src="Image/header-logo.png" alt=""
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-top: 40px;">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home
+              <a class="nav-link" href="products.html"
+                >PRODUCTS
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="products.html">Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="drinkreccomend.html">Bartending 101</a>
+              <a class="nav-link" href="drinkreccomend.html">BARTENDING 101</a>
             </li>
               <li class="nav-item">
-                <a class="nav-link" href="shippingpage.html">Order Shipment</a>
+                <a class="nav-link" href="shippingpage.html">ORDERS</a>
               </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="cart.html">Cart</a>
+              <a class="nav-link" href="cart.html">CART</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html">About Us</a>
             </li>
-            <li class="nav-item" >
-              <div style="float: right;">
-                <form action="products.html" style="display: flex;" method="GET"> 
-                <input id="searchbar" type="text" class="form-control"  placeholder="Search" name="keyword">
-                <input type="submit" style="margin-left: 5px;" class="button">
-              </form>
-              </div>
-            </li>
+
           </ul>
+
         </div>
+
+
+
+
       </div>
+
     </nav>
 
     <!-- Page Content -->
@@ -148,49 +166,29 @@
     <!-- Shipping form Ends Here -->
 
     <!-- Footer Starts Here -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="footer">
       <div class="container">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse"
-          id="navbarResponsive"
-          style="padding-top: 40px"
-        >
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item1 active">
-              <a class="nav-link" href="index.html"
-                >Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="products.html">Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="shippingpage.html">Order Shipment</a>
-            </li>
-          </ul>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="logo">
+             
+            </div>
+          </div>
+          <div class="col-md-12">
+           
+
+    <!-- Sub Footer Starts Here -->
+    <div class="sub-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="copyright-text">
+             
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
-</div>
-
+    </div>
     <!-- Footer ends here  -->
 
     <!-- Bootstrap core JavaScript -->
@@ -200,8 +198,9 @@
     <!-- Additional Scripts -->
     <script src="./Script/custom.js"></script>
     <script src="./Script/owl.js"></script>
-    <script src="./Script/searchbar.js"></script>
+    <script src="./Script/isotope.js"></script>
+    <script src="./Script/flex-slider.js"></script>
     <script src="./Script/recommend.js"></script>
-</div>
+
   </body>
 </html>

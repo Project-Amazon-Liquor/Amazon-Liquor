@@ -33,6 +33,7 @@ function handleSubmit(e) {
   var shipping_info = `${first}:${last}:${email}:${phone}:${address}`;
 
   pushToServer(_id, product_details, total_price, order_date, shipping_info);
+  localStorage.setItem("stored_item", "{}");
 }
 
 function pushToServer(

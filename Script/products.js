@@ -16,7 +16,6 @@ function pageLoad() {
   loadProductsCard().then((products) => {
     for (const product of products) {
       let { _id, Brand, Category, URL } = product;
-      console.log(_id);
       if (URL === "" || !URL) {
         URL = FALL_BACK_DESTINATION_PHOTO_URL;
       }

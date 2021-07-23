@@ -7,21 +7,22 @@ var productName = 0;
 var photoURL = "";
 const urlSearchParams = new URLSearchParams(window.location.search);
 const par = Object.fromEntries(urlSearchParams.entries());
-//localStorage.setItem("stored_item", "{}");
+
 if (!localStorage.getItem("stored_item")) {
   localStorage.setItem("stored_item", "{}");
 }
 
 load();
-console.log(localStorage.getItem("stored_item"));
 
 function load() {
   const productURL = `${URL}/search?_id=${par._id}`;
+
   fetch(productURL)
     .then((data) => data.json())
     .then((product) => {
       product = product[0];
       const { _id, Brand, Category, URL, Retail_Price } = product;
+
       document.getElementById("product-image").innerHTML = `<img src=${URL}>`;
 
       document.getElementById("product-info").innerHTML = `<h4>${Brand}</h4>
