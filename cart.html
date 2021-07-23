@@ -13,27 +13,29 @@
       rel="stylesheet"
     />
 
-    <title>product</title>
+    <title>Cart</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
+       <!-- Bootstrap core CSS -->
+       <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="./CSS/fontawesome.css" />
-    <link rel="stylesheet" href="./CSS/tooplate-main.css" />
-    <link rel="stylesheet" href="./CSS/owl.css" />
+    <link rel="stylesheet" href="./CSS/fontawesome.css">
+    <link rel="stylesheet" href="./CSS/tooplate-main.css">
+    <link rel="stylesheet" href="./CSS/owl.css">
+    <link rel="stylesheet" href="./CSS/flex-slider.css">
     <link rel="stylesheet" href="./CSS/styles.css" />
+    <link rel="stylesheet" href="./CSS/cart.css" />
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="./jquery/jquery.min.js"></script>
-    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Bootstrap core JavaScript -->
+      <script src="./jquery/jquery.min.js"></script>
+      <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Additional Scripts -->
     <script src="./Script/custom.js"></script>
-    <script src="Script/owl.js"></script>
-    <script src="Script/isotope.js"></script>
-    <script defer src="Script/single.js"></script>
-    <script src="Script/flex-slider.js"></script>
+    <script src="./Script/owl.js"></script>
+    <script src="./Script/isotope.js"></script>
+    <script defer src="./Script/cart.js"></script>
+    <script src="./Script/flex-slider.js"></script>
   </head>
 
   <body>
@@ -90,27 +92,36 @@
         </div>
       </div>
     </nav>
+
     <!-- Page Content -->
-    <!-- Single Starts Here -->
-    <div class="single-product">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <div class="line-dec"></div>
-              <h1>Single Product</h1>
-            </div>
-          </div>
-          <div
-            id="product-image"
-            class="col-md-6"
-            style="height: 500px; width: 500px"
-          ></div>
-          <div class="col-md-6">
-            <div id="product-info"></div>
-            <div id="product-qty" class="right-content"></div>
-          </div>
-        </div>
+    <!-- Items Starts Here -->
+    <div class="small-container cart-page">
+      <table id="cart-list">
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      </table>
+
+      <div class="total-price">
+        <table>
+          <tr>
+            <td>Subtotal</td>
+            <td id="Subtotal"></td>
+          </tr>
+          <tr>
+            <td>Tax (15%)</td>
+            <td id="Tax"></td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td id="Total"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="total-price">
+        <a href="#" class="checkoutbtn">Proceed to checkout &#8594;</a>
       </div>
     </div>
 
@@ -174,9 +185,10 @@
         </div>
       </div>
     </div>
+
     <!-- Sub Footer Ends Here -->
 
-    <script language="text/Javascript">
+    <!-- <script language="text/Javascript">
       cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
       function clearField(t) {
         //declaring the array outside of the
@@ -187,6 +199,6 @@
           t.style.color = "#fff";
         }
       }
-    </script>
+    </script> -->
   </body>
 </html>

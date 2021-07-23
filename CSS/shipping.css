@@ -1,0 +1,124 @@
+/* Banner Style */
+.banner1 {
+  margin-top: 50px;
+  background-image: url(../Image/ship.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 150px 0px;
+  background-position: center center;
+}
+.banner1 .caption {
+  background-color: rgba(250, 250, 250, 0.9);
+  padding: 30px;
+  max-width: 450px;
+}
+.banner1 .caption h2 {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e1e1e;
+}
+.banner1 .caption .line-dec {
+  width: 30px;
+  height: 5px;
+  background-color: #3a8bcd;
+}
+.banner1 .caption p {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.nav-item1 {
+  margin: 0px 15px;
+  text-decoration-color: beige;
+}
+/* Header Style */
+.navbar1 .navbar-brand1 {
+  text-align: center;
+  width: 100%;
+  position: relative;
+  padding: 25px 0px;
+}
+.bg-dark1 {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-bottom: 1px solid rgb(10, 10, 10);
+}
+#navbarResponsive {
+  z-index: 999;
+  position: absolute;
+  left: 50%;
+  top: -25px;
+  transform: translateX(-50%);
+}
+.navbar-dark .navbar-nav .nav-item {
+  margin: 0px 15px;
+}
+.navbar-dark .navbar-nav .nav-link {
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0a0a0a;
+  transition: all 0.5s;
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show > .nav-link {
+  color: #121213;
+}
+.navbar:after {
+  width: 100%;
+
+  background-color: rgb(8, 8, 8);
+  content: "";
+  position: absolute;
+  left: 0;
+  
+}
+.navbar-dark .navbar-toggler-icon {
+  background-image: none;
+}
+.navbar-dark .navbar-toggler {
+  border-color: #3a8bcd;
+  background-color: #3a8bcd;
+  height: 50px;
+  outline: none;
+}
+.navbar-dark .navbar-toggler-icon:after {
+  content: "\f0c9";
+  color: rgb(19, 18, 18);
+  font-size: 22px;
+  line-height: 30px;
+  font-family: "FontAwesome";
+}
+/* Banner Style */
+.banner1 {
+  margin-top: 50px;
+  background-image: url(../Image/ship.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 150px 0px;
+  background-position: center center;
+}
+.banner1 .caption {
+  background-color: rgba(15, 14, 14, 0.9);
+  padding: 30px;
+  max-width: 450px;
+}
+.banner1 .caption h2 {
+  margin-top: 50px;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #1e1e1e;
+}
+.banner1 .caption .line-dec {
+  width: 30px;
+  height: 5px;
+  background-color: #3a8bcd;
+}
+.banner1.caption p {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
