@@ -67,7 +67,7 @@
 .navbar-dark .navbar-nav .show > .nav-link {
   color: #121213;
 }
-.navbar:after {
+/* .navbar:after {
   width: 100%;
 
   background-color: rgb(8, 8, 8);
@@ -121,4 +121,7 @@
 .banner1.caption p {
   margin-top: 15px;
   margin-bottom: 20px;
+}
+.bg {
+  background-color: rgb(248, 200, 192);
 }

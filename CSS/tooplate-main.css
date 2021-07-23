@@ -678,6 +678,9 @@ a {
   box-shadow: none;
   border: none;
 }
+.bg {
+  background-color: rgb(248, 200, 192);
+}
 
 /* Responsive Style */
 @media (max-width: 991px) {
