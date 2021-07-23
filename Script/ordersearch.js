@@ -1,51 +1,46 @@
-const API_BASE_URL = "https://amazonliquor.herokuapp.com";
-const URL = `${API_BASE_URL}/orders`;
+
+const ORDERURL = `https://amazonliquor.herokuapp.com/orders`;
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const par = Object.fromEntries(urlSearchParams.entries());
 console.log(par);
 console.log(jQuery.isEmptyObject(par));
 
-async function loadProductsCard() {
-  const response = await fetch(URL);
-  const products = await response.json();
-  return products;
+async function loadorderCard() {
+  const response = await fetch(ORDERURL);
+  const order = await response.json();
+  return order;
 }
 
 function pageLoad() {
-  loadProductsCard().then((products) => {
-    for (const _id in products) {
-      let { name, location, photo } = products[_id];
+  loadorderCard().then((order) => {
 
-      if (
-        jQuery.isEmptyObject(par) ||
-        par.keyword.toLowerCase() === "" ||
-        par.keyword.toLowerCase() === location.toLowerCase()
-      ) {
-        let card = document.createElement("div");
-        card._id = _id;
-        card.classList = "item new col-md-4";
-        card.innerHTML = `<a href="single-product.html">
-          <div class="featured-item">
-            <img
-              src=${photo}
-              class="card-img-top"
-              alt=""
-            />
-            <h4>${name}</h4>
-            <h6>${location}</h6>
-          </div>
-        </a>`;
+    for (const key in order) {
+      if (order[key]._id == par.keyword) {
+        const element = order[key];
+        let { _id, Products, Total_Price, Order_Date, Shipping_Info} = element;
 
-        card.addEventListener("click", handleClick);
-        document.getElementById("products_container").appendChild(card);
+        
+
+          document.getElementById("id").value = _id;
+          document.getElementById("date").value = Order_Date;
+          document.getElementById("totalPrice").value = "$"+Total_Price;         
+          document.getElementById("shipping").value = 
+          Shipping_Info.first_name+" "+Shipping_Info.last_name +"\n"+
+          Shipping_Info.email+"\n"+
+          Shipping_Info.phone+"\n"+
+          Shipping_Info.address+"\n\n";
+
+          Products.forEach(elements => {
+            document.getElementById("shipping").value += 
+          "Product ID: "+elements.product_id+"\n"+"Quantity: "+elements.quantity+"\n\n";
+        });;
+        break;
       }
     }
-  });
-}
+      
 
-function handleClick(e) {
-  e.preventDefault();
-  let _id = e.currentTarget._id;
-  location.href = `single-product.html?_id=${_id}`;
+
+    
+  });
 }

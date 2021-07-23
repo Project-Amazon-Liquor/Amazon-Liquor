@@ -1,6 +1,12 @@
+const page = window.location.href;
+const homePage = "index.html";
 
 const API_BASE_URL = "https://amazonliquor.herokuapp.com";
 const URL =`${API_BASE_URL}/products`;
+
+
+
+
 
 
 loadFeatureCards();
@@ -22,8 +28,12 @@ function loadFeatureCards(){
                     <h6>$${Retail_Price}</h6>
                     </div>
                     `;
+                    if(page.includes(homePage)){
+                       document.getElementById("featureBanner").appendChild(featureCard); 
+                    }else{
 
-                    document.getElementById("featureBanner").appendChild(featureCard);
+                    }
+                    
             }
         })
         
