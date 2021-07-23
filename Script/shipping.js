@@ -32,15 +32,16 @@ function handleSubmit(e) {
   const address = e.target.elements["Address"].value;
   var shipping_info = `${first}:${last}:${email}:${phone}:${address}`;
 
-  // pushToServer(
-  //   _id,
-  //   commerout(product_details),
-  //   total_price,
-  //   order_date,
-  //   shipping_info
-  // );
+  pushToServer(
+    _id,
+    commerout(product_details),
+    total_price,
+    order_date,
+    shipping_info
+  );
   localStorage.setItem("stored_item", "{}");
-  alert(`       Your order has been submitted!\n
+  alert(`\n\n    
+      Your order has been submitted!\n
       Your order ID is: ${_id}
       Thank you for shopping with us!\n
       Wanna have something fun?!`);

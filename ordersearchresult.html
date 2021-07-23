@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700"
-      rel="stylesheet"
-    />
 
-    <title>Cart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-       <!-- Bootstrap core CSS -->
-       <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>Amazon Liquor</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="./CSS/fontawesome.css">
     <link rel="stylesheet" href="./CSS/tooplate-main.css">
     <link rel="stylesheet" href="./CSS/owl.css">
-    <link rel="stylesheet" href="./CSS/flex-slider.css">
     <link rel="stylesheet" href="./CSS/styles.css" />
-    <link rel="stylesheet" href="./CSS/cart.css" />
+
+            <!-- Bootstrap core JavaScript -->
+            <script src="jquery/jquery.min.js"></script>
+            <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+        
+            <!-- Additional Scripts -->
+            <script src="Script/custom.js"></script>
+            <script src="Script/owl.js"></script>
+            <script src="Script/isotope.js"></script>
+            <script src="Script/flex-slider.js"></script>
+            <script defer src="Script/ordersearch.js"></script>
 
 
-  
+    
 
-      <!-- Bootstrap core JavaScript -->
-      <script src="./jquery/jquery.min.js"></script>
-      <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Additional Scripts -->
-    <script src="./Script/custom.js"></script>
-    <script src="./Script/owl.js"></script>
-    <script src="./Script/isotope.js"></script>
-    <script defer src="./Script/cart.js"></script>
-    <script src="./Script/flex-slider.js"></script>
   </head>
 
   <body>
-    <div class="bg">
-    <!-- Pre Header -->
+
+     <!-- Pre Header -->
     <div id="pre-header">
       <div class="container">
         <div class="row">
@@ -74,25 +71,26 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="index.html">Home
+
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="products.html"
                 >PRODUCTS
-
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="drinkreccomend.html">BARTENDING 101</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="ordersearchresult.html">ORDERS</a>
-            </li>
-            </li>
             <li class="nav-item active">
-              <a class="nav-link" href="cart.html">CART
+              <a class="nav-link" href="ordersearchresult.html">ORDERS
                 <span class="sr-only">(current)</span>
               </a>
+            </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">CART</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html">About Us</a>
@@ -108,39 +106,51 @@
     </nav>
 
     <!-- Page Content -->
-    <!-- Items Starts Here -->
-    <div class="small-container cart-page">
-      <table id="cart-list">
-        <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Subtotal</th>
-        </tr>
-      </table>
-
-      <div class="total-price">
-        <table>
-          <tr>
-            <td>Subtotal</td>
-            <td id="Subtotal"></td>
-          </tr>
-          <tr>
-            <td>Tax (15%)</td>
-            <td id="Tax"></td>
-          </tr>
-          <tr>
-            <td>Total</td>
-            <td id="Total"></td>
-          </tr>
-        </table>
-      </div>
-      <div class="total-price">
-        <a href="shippingpage.html" class="checkoutbtn"
-          >Proceed to checkout &#8594;</a
-        >
+    <!-- Banner Starts Here -->
+    <div class="banner2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="caption">
+              <h2>Order Search</h2>
+                <div class="line-dec"></div>
+                    <!-- <div class="no-gutter featured-items">
+                        <div class="container"></div> -->
+<!-- 
+              <div class="row"> -->
+                <div class="col-md-12">
+                  <!-- <div class="section-heading"> -->
+                        <p><em>Please Input Your Order ID Here</em></p>
+                        <form id="order-search-form">
+                          <!-- <div class="mb-3"> -->
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="orderid"
+                              placeholder="Order ID"
+                            />
+                            <button id="search-order" type="submit" class="checkoutbtn btn btn-primary submit_btn">
+                                Search Your Order
+                            </button>
+                            </div>
+                        </form>
+                        <h5 id="id-date-price"></h5>
+                        <h6 id="products"></h6>
+                        <h6 id="shipping-info"></h6>
+                        <h3 id="no"></h3>
+                        
+                    </div>
+                </div>
+            </div>
+  
+              
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
+    <!-- Banner Ends Here -->   
    <!-- Footer Starts Here -->
    <div class="footer">
     <div class="container">

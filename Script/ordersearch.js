@@ -1,46 +1,56 @@
+const API_BASE_URL = "https://amazonliquor.herokuapp.com";
+const URL = `${API_BASE_URL}/orders`;
 
-const ORDERURL = `https://amazonliquor.herokuapp.com/orders`;
+document
+  .getElementById("order-search-form")
+  .addEventListener("submit", handleSubmit);
 
-const urlSearchParams = new URLSearchParams(window.location.search);
-const par = Object.fromEntries(urlSearchParams.entries());
-console.log(par);
-console.log(jQuery.isEmptyObject(par));
-
-async function loadorderCard() {
-  const response = await fetch(ORDERURL);
-  const order = await response.json();
-  return order;
+function handleSubmit(e) {
+  e.preventDefault();
+  const orderid = e.target.elements["orderid"].value;
+  e.target.elements["orderid"].value = "";
+  clear();
+  loadOrder(`${URL}/search?_id=${orderid}`);
+}
+function clear() {
+  document.getElementById("id-date-price").innerHTML = "";
+  document.getElementById("products").innerHTML = "";
+  document.getElementById("shipping-info").innerHTML = "";
+  document.getElementById("no").innerHTML = "";
 }
 
-function pageLoad() {
-  loadorderCard().then((order) => {
+function loadOrder(URL) {
+  fetch(URL)
+    .then((data) => data.json())
+    .then((product) => {
+      product = product[0];
+      print(product);
+    })
+    .catch((err) => {
+      document.getElementById("no").innerHTML = "NO ORDER FOUND!";
+    });
+}
 
-    for (const key in order) {
-      if (order[key]._id == par.keyword) {
-        const element = order[key];
-        let { _id, Products, Total_Price, Order_Date, Shipping_Info} = element;
+function print(product) {
+  const { _id, Products, Total_Price, Order_Date, Shipping_Info } = product;
+  document.getElementById(
+    "id-date-price"
+  ).innerHTML = `Order ID: ${_id} <br> Order Date: ${Order_Date} <br> Order Total: $${Number(
+    Total_Price
+  ).toFixed(2)}`;
 
-        
-
-          document.getElementById("id").value = _id;
-          document.getElementById("date").value = Order_Date;
-          document.getElementById("totalPrice").value = "$"+Total_Price;         
-          document.getElementById("shipping").value = 
-          Shipping_Info.first_name+" "+Shipping_Info.last_name +"\n"+
-          Shipping_Info.email+"\n"+
-          Shipping_Info.phone+"\n"+
-          Shipping_Info.address+"\n\n";
-
-          Products.forEach(elements => {
-            document.getElementById("shipping").value += 
-          "Product ID: "+elements.product_id+"\n"+"Quantity: "+elements.quantity+"\n\n";
-        });;
-        break;
-      }
-    }
-      
-
-
-    
+  var productinfo = "";
+  Products.forEach((element) => {
+    console.log(element.product_id);
+    productinfo += `Product ID: 
+    ${element.product_id} * 
+    ${element.quantity}<br>`;
   });
+  document.getElementById("products").innerHTML = productinfo;
+  console.log(Shipping_Info);
+  document.getElementById(
+    "shipping-info"
+  ).innerHTML = `${Shipping_Info.first_name} *** <br>
+  ${Shipping_Info.email}<br>
+  ${Shipping_Info.address}`;
 }
