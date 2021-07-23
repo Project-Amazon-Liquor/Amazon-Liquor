@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Programming Language Recommender</title>
+    <!-- css -->
+    <link rel="stylesheet" href="./recommend.css" />
+  </head>
+
+  <body>
+    <h1 style="text-align: center" ;>
+      <u>Don't know what to buy? let us Help You </u>
+    </h1>
+    <br />
+    <h3>What do you like to buy? For what kind of an occasion? :</h3>
+    <p style="font-size: 20px" ;>Party?</p>
+
+    <p>&nbsp;</p>
+    <img src="./ship.jpg" width="480px" height="320px" alt="important" />
+    <p>&nbsp;</p>
+
+    <h2>What do you like to drink today?</h2>
+
+    <p class="p2">Choose :</p>
+    <select id="choice">
+      <option value="Select">Select</option>
+      <option value="Celebrating Something? Champagne?">
+        Celebrating Something? Champagne?
+      </option>
+      <option value="Something Sweet?">Something Sweet?</option>
+      <option value="Beer">Beer</option>
+      <option value="Wine">Wine</option>
+      <option value="Whiskey">Whiskey</option>
+    </select>
+
+    <button class="btn1" onclick="loadchoices()">Continue</button><br />
+    <p><u class="btn1">Recommender</u> :</p>
+    <br />
+    <h3 class="h3" id="result"></h3>
+    <br />
+
+    <!-- js -->
+    <script src="./recommend.js"></script>
+  </body>
+</html>
