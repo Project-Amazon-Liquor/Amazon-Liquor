@@ -1,7 +1,7 @@
-const API_BASE_URL = "http://nothinginit.herokuapp.com";
+const API_BASE_URL = "https://amazonliquor.herokuapp.com";
 const FALL_BACK_DESTINATION_PHOTO_URL =
   "https://cavchronicle.org/wp-content/uploads/2018/03/top-travel-destination-for-visas-900x504.jpg";
-const URL = `${API_BASE_URL}/destinations`;
+const URL = `${API_BASE_URL}/products`;
 
 var productName = 0;
 var photoURL = "";
@@ -13,18 +13,20 @@ if (!localStorage.getItem("stored_item")) {
 }
 
 load();
+console.log(localStorage.getItem("stored_item"));
 
 function load() {
-  const productURL = `${URL}?_id=${par._id}`;
+  const productURL = `${URL}/search?_id=${par._id}`;
   fetch(productURL)
     .then((data) => data.json())
     .then((product) => {
-      const { name, location, photo } = product;
-      document.getElementById("product-image").innerHTML = `<img src=${photo}>`;
+      product = product[0];
+      const { _id, Brand, Category, URL, Retail_Price } = product;
+      document.getElementById("product-image").innerHTML = `<img src=${URL}>`;
 
-      document.getElementById("product-info").innerHTML = `<h4>${name}</h4>
-            <h6>Retail Price: ${location}</h6>
-            <p>${location}</p>`;
+      document.getElementById("product-info").innerHTML = `<h4>${Brand}</h4>
+            <h6>Retail Price: $${Number(Retail_Price).toFixed(2)}</h6>
+            <p>${Category}</p>`;
 
       document.getElementById(
         "product-qty"
@@ -61,7 +63,7 @@ function getTemp(id) {
 }
 
 async function getProduct(id) {
-  const response = await fetch(`${URL}?_id=${id}`);
+  const response = await fetch(`${URL}/search?_id=${id}`);
   const product = await response.json();
   return product;
 }
@@ -73,15 +75,16 @@ function postputTemp(id, newQty) {
     localStorage.setItem("stored_item", JSON.stringify(oldItems));
   } else {
     getProduct(id).then((product) => {
-      const { name, location, photo } = product;
-
+      product = product[0];
+      const { Brand, URL, Retail_Price } = product;
       oldItems[id] = {
         _id: id,
-        price: id,
-        name: name,
+        price: Retail_Price,
+        name: Brand,
         qty: newQty,
-        photo: photo,
+        photo: URL,
       };
+
       localStorage.setItem("stored_item", JSON.stringify(oldItems));
     });
   }
