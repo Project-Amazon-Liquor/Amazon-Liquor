@@ -32,8 +32,19 @@ function handleSubmit(e) {
   const address = e.target.elements["Address"].value;
   var shipping_info = `${first}:${last}:${email}:${phone}:${address}`;
 
-  pushToServer(_id, product_details, total_price, order_date, shipping_info);
+  // pushToServer(
+  //   _id,
+  //   commerout(product_details),
+  //   total_price,
+  //   order_date,
+  //   shipping_info
+  // );
   localStorage.setItem("stored_item", "{}");
+  alert(`       Your order has been submitted!\n
+      Your order ID is: ${_id}
+      Thank you for shopping with us!\n
+      Wanna have something fun?!`);
+  window.open("drinkreccomend.html");
 }
 
 function pushToServer(
@@ -44,16 +55,15 @@ function pushToServer(
   shipping_info
 ) {
   const data = {
-    _id: id,
-    Products: product_details,
-    Total_Price: total_price,
-    Order_Date: order_date,
-    Shipping_Info: shipping_info,
+    _id,
+    product_details,
+    total_price,
+    order_date,
+    shipping_info,
   };
   console.log(data);
   return fetch("https://amazonliquor.herokuapp.com/orders", {
     method: "post",
-    body: JSON.stringify(),
     headers: { "Content-type": "application/json; charset=UTF-8" },
     body: JSON.stringify(data),
   });
@@ -111,4 +121,12 @@ function getTemp(id) {
 
 function addProductDetail(item) {
   product_details += `${item};`;
+}
+
+function commerout(details) {
+  var nocommers = details;
+  if (nocommers.endsWith(";")) {
+    nocommers = nocommers.slice(0, nocommers.lastIndexOf(";"));
+  }
+  return nocommers;
 }

@@ -1,7 +1,3 @@
-body {
-  font-family: "Poppins", sans-serif;
-}
-
 p {
   color: #555;
 }
@@ -276,12 +272,10 @@ input:focus {
 }
 
 /*---------------- cart page -----------*/
-
 table {
   width: 100%;
   border-collapse: collapse;
 }
-
 td {
   padding: 15px 5px;
 }
